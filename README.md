@@ -1,5 +1,5 @@
-*Ultimos Tweets*
+*PRACTICA 2 - MOSTRAR ULTIMOS TWEETS PUBLICADOS*
 ================
-**dhfjask**
+**Autor: Waldo Nazco Torres**
 ----------------
-lasfjlsakjd
+No puedo usar bundler por lo que no me permite instalar gemas imposibilitando la realización de la práctica.

@@ -3,20 +3,36 @@ require 'twitter'
 require 'thin'
 require './configure'
 
-screen_name = ARGV[0] || 'timoreilly'
-a_user = Twitter.user(screen_name)
+# encoding: utf-8
 
-puts "Username   : #{a_user.screen_name}"
-puts "Name       : #{a_user.name}"
-puts "Location   : #{a_user.location}"
-puts "URL        : #{a_user.url}" if a_user.url
-puts "Verified   : #{a_user.verified}"
-puts
+class Practica2
 
-tweet = Twitter.user_timeline(screen_name).first
-
-if tweet
-  puts "Tweet text : #{tweet.text }"
-  puts "Tweet time : #{tweet.created_at}"
-  puts "Tweet ID   : #{tweet.id}"
+  def call env
+    req = Rack::Request.new(env)
+    res = Rack::Response.new 
+    res['Content-Type'] = 'text/html'
+    name = (req["firstname"] && req["firstname"] != '') ? req["firstname"] :'WaldoNazco'
+    res.write <<-"EOS"
+      <!DOCTYPE HTML>
+      <html>
+        <title>Rack::Response</title>
+        <body>
+          <h1>
+              #{Twitter.user_timeline(name).first.text}
+             <form action="/" method="post">
+               Your name: <input type="text" name="firstname" autofocus><br>
+               <input type="submit" value="Submit">
+             </form>
+          </h1>
+        </body>
+      </html>
+    EOS
+    res.finish
+  end
 end
+
+Rack::Server.start(
+  :app => Practica2.new,
+  :Port => 9292,
+  :server => 'thin'
+)

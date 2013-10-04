@@ -2,4 +2,8 @@
 ================
 **Autor: Waldo Nazco Torres**
 ----------------
-No puedo usar bundler por lo que no me permite instalar gemas imposibilitando la realización de la práctica.
+Práctica en la que dado un usuario twitter mostrará sus últimos tweets publicados.
+
+Muchos problemas encontrados a la hora de instalación de las gemas, bundle install no funcionaba impidiendo probar funcionamiento de la práctica.
+
+

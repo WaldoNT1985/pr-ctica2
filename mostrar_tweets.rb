@@ -20,7 +20,7 @@ class Practica2
           <h1>
               #{Twitter.user_timeline(name).first.text}
              <form action="/" method="post">
-               Your name: <input type="text" name="firstname" autofocus><br>
+               Introduzca Nombre: <input type="text" name="firstname" autofocus><br>
                <input type="submit" value="Submit">
              </form>
           </h1>
@@ -33,6 +33,6 @@ end
 
 Rack::Server.start(
   :app => Practica2.new,
-  :Port => 9292,
+  :Port => 8080,
   :server => 'thin'
 )
